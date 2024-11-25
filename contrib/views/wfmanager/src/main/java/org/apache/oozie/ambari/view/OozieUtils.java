@@ -42,9 +42,9 @@ public class OozieUtils {
 
   public String generateConfigXml(Map<String, String> map) {
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     DocumentBuilder db;
     try {
+      dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       db = dbf.newDocumentBuilder();
       Document doc = db.newDocument();
       Element configElement = doc.createElement("configuration");
@@ -98,7 +98,7 @@ public class OozieUtils {
         return JobType.BUNDLE;
       }
       throw new RuntimeException("invalid xml submitted");
-    } catch (Exception e) {
+    } catch (ParserConfigurationException | Exception e) {
       throw new RuntimeException(e);
     }
   }
@@ -124,16 +124,16 @@ public class OozieUtils {
       String name = doc.getDocumentElement().getAttributeNode("name").getValue();
       return name;
 
-    } catch (Exception e) {
+    } catch (ParserConfigurationException | Exception e) {
       throw new RuntimeException(e);
     }
   }
 
   public String generateWorkflowXml(String actionNodeXml) {
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     DocumentBuilder db;
     try {
+      dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       db = dbf.newDocumentBuilder();
       Document doc = db.newDocument();
 
