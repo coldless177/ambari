@@ -42,6 +42,7 @@ public class OozieUtils {
 
   public String generateConfigXml(Map<String, String> map) {
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     DocumentBuilder db;
     try {
       db = dbf.newDocumentBuilder();
@@ -80,6 +81,7 @@ public class OozieUtils {
   public JobType deduceJobType(String xml) {
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+      dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       DocumentBuilder db = null;
 
       db = dbf.newDocumentBuilder();
@@ -114,6 +116,7 @@ public class OozieUtils {
   public String deduceWorkflowNameFromXml(String xml) {
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+      dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
       DocumentBuilder db = dbf.newDocumentBuilder();
       InputSource is = new InputSource();
       is.setCharacterStream(new StringReader(xml));
@@ -128,6 +131,7 @@ public class OozieUtils {
 
   public String generateWorkflowXml(String actionNodeXml) {
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
     DocumentBuilder db;
     try {
       db = dbf.newDocumentBuilder();
